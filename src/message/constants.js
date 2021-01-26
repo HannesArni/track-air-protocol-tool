@@ -1,0 +1,207 @@
+const ECU_INFO_PARAMS = ['speed', 'currentMileage', 'remainingMileage', 'totalMileage', 'headLightStatus', 'rearLightStatus', 'rideTime',
+    'firmwareVersion', 'hardwareVersion', 'bellButtonStatus', 'charging', 'batteryStatus', 'mechanicalLockState', 'mechanicalLockDoor', 'batteryHeatingPlate'];
+
+const PARAM_MAPPER = {}
+
+// LIGHT STATE
+const LIGHT_STATUS_PARAMS = ['rearLightStatus', 'headLightStatus']
+
+const [LIGHT_STATUS_OFF, LIGHT_STATUS_ON] = [...Array(2).keys()]
+const LIGHT_STATUS_MAPPER = {
+    [LIGHT_STATUS_OFF]: 'Light off',
+    [LIGHT_STATUS_ON]: 'Light on',
+}
+LIGHT_STATUS_PARAMS.forEach(param => PARAM_MAPPER[param] = LIGHT_STATUS_MAPPER)
+
+// NETWORK TYPE
+const NETWORK_TYPE_PARAM = 'networkType'
+
+const [NETWORK_TYPE_NOT_REGISTERED, NETWORK_TYPE_GSM, NETWORK_TYPE_LTE, NETWORK_TYPE_3G] = [...Array(4).keys()];
+const NETWORK_TYPE_MAPPER = {
+    [NETWORK_TYPE_NOT_REGISTERED]: 'Not registered',
+    [NETWORK_TYPE_GSM]: 'GSM',
+    [NETWORK_TYPE_LTE]: 'LTE',
+    [NETWORK_TYPE_3G]: '3G',
+}
+PARAM_MAPPER[NETWORK_TYPE_PARAM] = NETWORK_TYPE_MAPPER
+
+// NETWORK REPORT MODE
+const NETWORK_REPORT_MODE_PARAM = 'reportMode'
+
+const NETWORK_REPORT_MODE_STOP = 0
+const NETWORK_REPORT_MODE_TCP = 3
+const NETWORK_REPORT_MODE_MAPPER = {
+    [NETWORK_REPORT_MODE_STOP]: 'Stop',
+    [NETWORK_REPORT_MODE_TCP]: 'tcp',
+}
+PARAM_MAPPER[NETWORK_REPORT_MODE_PARAM] = NETWORK_REPORT_MODE_MAPPER
+
+// NETWORK MODE
+const NETWORK_MODE_PARAM = 'networkMode';
+
+const [NETWORK_MODE_AUTO, NETWORK_MODE_GSM, NETWORK_MODE_LTE, NETWORK_MODE_3G] = [...Array(4).keys()]
+const NETWORK_MODE_MAPPER = {
+    [NETWORK_MODE_AUTO]: 'Auto',
+    [NETWORK_MODE_GSM]: 'GSM only',
+    [NETWORK_MODE_LTE]: 'LTE only',
+    [NETWORK_MODE_3G]: '3G only',
+}
+PARAM_MAPPER[NETWORK_MODE_PARAM] = NETWORK_MODE_MAPPER
+
+// buffer mode
+const BUFFER_MODE_PARAM = 'enableBuffer';
+const [BUFFER_MODE_DISABLED, BUFFER_MODE_ENABLED, BUFFER_MODE_HIGH_PRIORITY] = [...Array(3).keys()];
+const BUFFER_MODE_MAPPER = {
+    [BUFFER_MODE_DISABLED]: 'Disabled',
+    [BUFFER_MODE_ENABLED]: 'Enabled',
+    [BUFFER_MODE_HIGH_PRIORITY]: 'High priority',
+}
+PARAM_MAPPER[BUFFER_MODE_PARAM] = BUFFER_MODE_MAPPER
+
+// lte mode
+const LTE_MODE_PARAM = 'enableBuffer';
+const [LTE_MODE_CATM1_CATNB1, LTE_MODE_CATNB1_CATM1, LTE_MODE_CATM1, LTE_MODE_CAT_NB1] = [...Array(4).keys()];
+const LTE_MODE_MAPPER = {
+    [LTE_MODE_CATM1_CATNB1]: 'Cat-M1 & Cat-NB1 (Cat-M1 first)',
+    [LTE_MODE_CATNB1_CATM1]: 'Cat-M1 & Cat-NB1 (Cat-NB1 first)',
+    [LTE_MODE_CATM1]: 'Cat-M1',
+    [LTE_MODE_CAT_NB1]: 'Cat-NB1',
+}
+PARAM_MAPPER[LTE_MODE_PARAM] = LTE_MODE_MAPPER
+
+// lte region
+const LTE_REGION_PARAM = 'lteMode';
+const [LTE_REGION_GLOBAL, LTE_REGION_AMERICA, LTE_REGION_EUROPE, LTE_REGION_BRAZIL, LTE_REGION_CHINA, LTE_REGION_AUSTRALIA] = [...Array(6).keys()]
+const LTE_REGION_MAPPER = {
+    [LTE_REGION_GLOBAL]: 'global',
+    [LTE_REGION_AMERICA]: 'America',
+    [LTE_REGION_EUROPE]: 'Europe',
+    [LTE_REGION_BRAZIL]: 'Brazil',
+    [LTE_REGION_CHINA]: 'China',
+    [LTE_REGION_AUSTRALIA]: 'Australia',
+}
+PARAM_MAPPER[LTE_REGION_PARAM] = LTE_REGION_MAPPER
+
+
+// sack mode
+const SACK_MODE_PARAM = 'enableSack';
+const [SACK_MODE_DISABLED, SACK_MODE_ENABLED, SACK_MODE_ENABLED_UNSAFE] = [...Array(3).keys()];
+const SACK_MODE_MAPPER = {
+    [SACK_MODE_DISABLED]: `The backend doesn't reply with SACK after receiving message`,
+    [SACK_MODE_ENABLED]: 'The backend replies with SACK after receiving message',
+    [SACK_MODE_ENABLED_UNSAFE]: 'The backend replies with SACK after receiving message without checking Serial number',
+}
+PARAM_MAPPER[SACK_MODE_PARAM] = SACK_MODE_MAPPER
+
+
+// watchdog interval unit
+const WATCHDOG_INTERVAL_UNIT_PARAM = 'unit';
+const [WATCHDOG_INTERVAL_UNIT_DAY, WATCHDOG_INTERVAL_UNIT_HOUR] = [...Array(2).keys()];
+const WATCHDOG_INTERVAL_UNIT_MAPPER = {
+    [WATCHDOG_INTERVAL_UNIT_DAY]: 'Day',
+    [WATCHDOG_INTERVAL_UNIT_HOUR]: 'Hour',
+}
+PARAM_MAPPER[WATCHDOG_INTERVAL_UNIT_PARAM] = WATCHDOG_INTERVAL_UNIT_MAPPER
+
+
+// Device state
+const DEVICE_STATE_PARAM = 'state';
+const DEVICE_STATE_STATIONARY = 41;
+const DEVICE_STATE_MOVING = 42;
+const DEVICE_STATE_MAPPER = {
+    [DEVICE_STATE_STATIONARY]: 'Stationary',
+    [DEVICE_STATE_MOVING]: 'Moving',
+}
+PARAM_MAPPER[DEVICE_STATE_PARAM] = DEVICE_STATE_MAPPER
+
+
+// Power supply
+const POWER_SUPPLY_PARAM = 'powerSupply';
+const [POWER_SUPPLY_MAIN, POWER_SUPPLY_BACKUP] = [...Array(2).keys()];
+const POWER_SUPPLY_MAPPER = {
+    [POWER_SUPPLY_MAIN]: 'Main',
+    [POWER_SUPPLY_BACKUP]: 'Backup',
+}
+PARAM_MAPPER[POWER_SUPPLY_PARAM] = POWER_SUPPLY_MAPPER
+
+
+// ECU Error type
+const ECU_ERROR_TYPE_PARAM = 'ecuErrorType';
+const [ECU_ERROR_TYPE_NORMAL, ECU_ERROR_TYPE_NO_RESPONSE, ECU_ERROR_TYPE_ERROR_REPORT] = [...Array(3).keys()];
+const ECU_ERROR_TYPE_MAPPER = {
+    [ECU_ERROR_TYPE_NORMAL]: 'Normal',
+    [ECU_ERROR_TYPE_NO_RESPONSE]: 'No response',
+    [ECU_ERROR_TYPE_ERROR_REPORT]: 'Error report',
+}
+PARAM_MAPPER[ECU_ERROR_TYPE_PARAM] = ECU_ERROR_TYPE_MAPPER
+
+
+// ECU lock state
+const ECU_LOCK_STATE_PARAM = 'ecuLockState';
+const [ECU_LOCK_STATE_UNLOCKED, ECU_LOCK_STATE_LOCKED] = [...Array(2).keys()];
+const ECU_LOCK_STATE_MAPPER = {
+    [ECU_LOCK_STATE_UNLOCKED]: 'Unlocked',
+    [ECU_LOCK_STATE_LOCKED]: 'Locked',
+}
+PARAM_MAPPER[ECU_LOCK_STATE_PARAM] = ECU_LOCK_STATE_MAPPER
+
+// LED work mode
+const LED_STATUS_MODE_PARAM = 'ledWorkMode'
+const [LED_STATUS_MODE_CONSTANT, LED_STATUS_MODE_FLASHING] = [...Array(2).keys()];
+const LED_STATUS_MODE_MAPPER = {
+    [LED_STATUS_MODE_CONSTANT]: 'Constant',
+    [LED_STATUS_MODE_FLASHING]: 'Flashes',
+}
+PARAM_MAPPER[LED_STATUS_MODE_PARAM] = LED_STATUS_MODE_MAPPER
+
+// NFC Tag source
+const NFC_SOURCE_PARAM = 'tagIdSelection';
+const [NFC_SOURCE_QR, NFC_SOURCE_STRING] = [...Array(2).keys()];
+const NFC_SOURCE_MAPPER = {
+    [NFC_SOURCE_QR]: 'NFC is encoded from QR',
+    [NFC_SOURCE_STRING]: 'NFC is encoded from tag id',
+}
+PARAM_MAPPER[NFC_SOURCE_PARAM] = NFC_SOURCE_MAPPER
+
+// LOCK STATE
+const LOCK_STATE_PARAMS = ['mechanicalLockState', 'mechanicalLockDoor']
+
+const [LOCK_STATE_UNLOCKED, LOCK_STATE_LOCKED, LOCK_STATE_UNKNOWN] = [...Array(3).keys()]
+const LOCK_STATE_MAPPER = {
+    [LOCK_STATE_UNLOCKED]: 'Unlocked',
+    [LOCK_STATE_LOCKED]: 'Locked',
+    [LOCK_STATE_UNKNOWN]: 'Unknown',
+}
+LOCK_STATE_PARAMS.forEach(param => PARAM_MAPPER[param] = LOCK_STATE_MAPPER)
+
+
+// LOCK REPORT TYPE
+const LOCK_REPORT_TYPE_PARAM = 'reportType'
+
+const LOCK_REPORT_TYPE_INITIAL = 0;
+const LOCK_REPORT_TYPE_LOCK_SUCCESSFUL = 10
+const LOCK_REPORT_TYPE_LOCK_FAIL = 11
+const LOCK_REPORT_TYPE_UNLOCK_SUCCESSFUL = 20
+const LOCK_REPORT_TYPE_UNLOCK_FAIL = 21
+const LOCK_REPORT_TYPE_LOCK_FAULT = 30
+const LOCK_REPORT_TYPE_LOCK_DOOR_OPEN = 40
+const LOCK_REPORT_TYPE_LOCK_DOOR_CLOSED = 41
+
+const LOCK_REPORT_TYPE_MAPPER = {
+    [LOCK_REPORT_TYPE_INITIAL]: 'Inital status',
+    [LOCK_REPORT_TYPE_LOCK_SUCCESSFUL]: 'Locking succeeded',
+    [LOCK_REPORT_TYPE_LOCK_FAIL]: 'Locking failed',
+    [LOCK_REPORT_TYPE_UNLOCK_SUCCESSFUL]: 'Unlocking succeeded',
+    [LOCK_REPORT_TYPE_UNLOCK_FAIL]: 'Unlocking failed',
+    [LOCK_REPORT_TYPE_LOCK_FAULT]: 'Lock fault',
+    [LOCK_REPORT_TYPE_LOCK_DOOR_OPEN]: 'Lock door opened',
+    [LOCK_REPORT_TYPE_LOCK_DOOR_CLOSED]: 'Lock door closed',
+}
+
+PARAM_MAPPER[LOCK_REPORT_TYPE_PARAM] = LOCK_REPORT_TYPE_MAPPER;
+
+
+module.exports = {
+    PARAM_MAPPER,
+    ECU_INFO_PARAMS
+}

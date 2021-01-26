@@ -1,0 +1,128 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+*{
+  box-sizing: border-box;
+}
+
+.mainInput{
+  max-width: 90%;
+  min-width: 90%;
+
+  margin-top: 10px;
+  height: 100px;
+}
+.commandsContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+.commandsContainer.column{
+  flex-direction: column;
+  align-items: center;
+}
+
+.commandContainer{
+  margin: 10px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.commandHeaderContainer{
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.commandParamContainer + .commandHeaderContainer{
+  margin-bottom: 10px;
+}
+.headerContainerGroup{
+  display: flex;
+  flex-direction: row;
+}
+.commandHeader{
+  font-weight: bold;
+}
+.commandDescription{
+  color: #00000080;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.ml{
+  padding-left: 20px;
+  width: 100%;
+}
+.subParamContainer{
+  padding-left: 10px;
+  margin-right: 20px;
+  text-align: left;
+  margin-bottom: 5px;
+}
+.commandParamContainer{
+  padding-right: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1px;
+}
+.commandParamName{
+  margin-right: 20px;
+}
+
+.error{
+  color: #cf0000;
+  font-weight: bold;
+}
+
+.at{
+  background-color: #ff000010;
+}
+.ack{
+  background-color: #0000ff10;
+}
+.notFixed{
+  background-color: #00ff0010;
+}
