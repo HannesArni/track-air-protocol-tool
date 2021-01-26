@@ -1,5 +1,5 @@
 const {PARAM_MAPPER, ECU_INFO_PARAMS} = require('./constants');
-const pdef = require('./protocol-definition.json');
+const pdef = require('./protocol-definition.js');
 const indexedPdef = {}
 pdef.forEach(protocol => {
     protocol.commands.forEach(command => indexedPdef[command.raw] = {...command, params: protocol.params})
