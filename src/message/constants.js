@@ -1,4 +1,4 @@
-const ECU_INFO_PARAMS = ['speed', 'currentMileage', 'remainingMileage', 'totalMileage', 'headLightStatus', 'rearLightStatus', 'rideTime',
+export const ECU_INFO_PARAMS = ['speed', 'currentMileage', 'remainingMileage', 'totalMileage', 'headLightStatus', 'rearLightStatus', 'rideTime',
     'firmwareVersion', 'hardwareVersion', 'bellButtonStatus', 'charging', 'batteryStatus', 'mechanicalLockState', 'mechanicalLockDoor', 'batteryHeatingPlate'];
 
 const PARAM_MAPPER = {}
@@ -201,7 +201,6 @@ const LOCK_REPORT_TYPE_MAPPER = {
 PARAM_MAPPER[LOCK_REPORT_TYPE_PARAM] = LOCK_REPORT_TYPE_MAPPER;
 
 
-module.exports = {
-    PARAM_MAPPER,
-    ECU_INFO_PARAMS
+export {
+PARAM_MAPPER
 }

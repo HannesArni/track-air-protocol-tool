@@ -1,1 +1,4 @@
-export parseMessage from './parse'
+import parseMessage from './parse'
+
+export default {parseMessage}
+
