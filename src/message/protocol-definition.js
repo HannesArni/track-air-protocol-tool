@@ -1,4 +1,4 @@
-module.exports = [
+const asdf = [
   {
     "commands": [
       {
@@ -1156,3 +1156,4 @@ module.exports = [
     ]
   }
 ]
+export default asdf

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6968b299-1a87-4e59-9d60-5bf8693d1772" name="Default Changelist" comment="">
+    <list default="true" id="6968b299-1a87-4e59-9d60-5bf8693d1772" name="Default Changelist" comment="Change json to js">
+      <change beforePath="$PROJECT_DIR$/src/message/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/message/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/message/parse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/message/parse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/message/protocol-definition.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/message/protocol-definition.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,8 +57,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1611681021636</updated>
-      <workItem from="1611681024059" duration="13965000" />
+      <workItem from="1611681024059" duration="14408000" />
     </task>
+    <task id="LOCAL-00001" summary="Change json to js">
+      <created>1611697712703</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1611697712703</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -74,5 +82,21 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Change json to js" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change json to js" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/message/parse.js</url>
+          <line>18</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
